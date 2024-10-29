@@ -4,6 +4,8 @@ intents:
   - greet
   - ask_car_details
   - inform
+  - affirm
+  - deny
 
 entities:
   - manufacturer
@@ -26,6 +28,7 @@ slots:
         entity: manufacturer
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: manufacturer
 
   model:
     type: text
@@ -35,6 +38,7 @@ slots:
         entity: model
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: model
 
   kms_driven:
     type: float
@@ -44,6 +48,7 @@ slots:
         entity: kms_driven
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: kms_driven
 
   fuel_type:
     type: text
@@ -53,6 +58,7 @@ slots:
         entity: fuel_type
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: fuel_type
 
   transmission_type:
     type: text
@@ -62,6 +68,7 @@ slots:
         entity: transmission_type
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: transmission_type
 
   mileage:
     type: float
@@ -71,6 +78,7 @@ slots:
         entity: mileage
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: mileage
 
   engine:
     type: float
@@ -80,6 +88,7 @@ slots:
         entity: engine
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: engine
 
   max_power:
     type: float
@@ -89,6 +98,7 @@ slots:
         entity: max_power
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: max_power
 
   seats:
     type: float
@@ -98,6 +108,7 @@ slots:
         entity: seats
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: seats
 
   year_of_manufacture:
     type: float
@@ -107,6 +118,8 @@ slots:
         entity: year_of_manufacture
         conditions: 
           - active_loop: car_details_form
+          - requested_slot: year_of_manufacture
+
 
 
 forms:
@@ -126,7 +139,7 @@ forms:
 
 responses:
   utter_greet:
-    - text: "Hi, how can I assist you with your car details today?"
+    - text: "Hi, how can I assist you today?"
 
   utter_ask_manufacturer:
     - text: "What is the manufacturer of your car?"
@@ -159,5 +172,14 @@ responses:
     - text: "What is the year of manufacture of your car?"
 
   utter_confirm_details:
-    - text: "Manufacturer: {manufacturer}, Model: {model}, Kilometers Driven: {kms_driven}, Fuel Type: {fuel_type}, Transmission Type: {transmission_type}, Mileage: {mileage} km/l, Engine: {engine}, Max Power: {max_power} bhp, Seats: {seats}, Year of Manufacture: {year_of_manufacture}"
+    - text: "Manufacturer: {manufacturer}, Model: {model}, Kilometers Driven: {kms_driven}, Fuel Type: {fuel_type}, Transmission Type: {transmission_type}, Mileage: {mileage} km/l, Engine: {engine}, Max Power: {max_power} bhp, Seats: {seats}, Year of Manufacture: {year_of_manufacture}. Are all the details correct?"
+
+  utter_predicted_price:
+    - text: "Price has been predicted"
+
+  utter_slots_cleared:
+    - text: "Slots are cleared. Type hi to restart"
+
+actions:
+  - action_clear_slots
 
