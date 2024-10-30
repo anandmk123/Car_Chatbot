@@ -13,6 +13,17 @@ nlu:
     - Can I give my car's manufacturer?
     - I want to sell my car
 
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+  
+- intent: deny
+  examples: |
+    - no
+    - nah
+    - nope
+
 - intent: inform
   examples: |
     - [toyota](manufacturer) [fortuner](model)

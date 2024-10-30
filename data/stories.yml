@@ -10,3 +10,19 @@ stories:
     - active_loop: car_details_form
     - active_loop: null
     - action: utter_confirm_details
+    - intent: affirm
+    - action: utter_predicted_price
+
+- story: Restart form to edit details
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_car_details
+    - action: car_details_form
+    - active_loop: car_details_form
+    - active_loop: null
+    - action: utter_confirm_details
+    - intent: deny
+    - action: action_clear_slots
+    - action: utter_slots_cleared
+
